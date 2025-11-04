@@ -16,37 +16,69 @@ int main() {
         {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
     };
 
+    int cone[3][5] = { {0, 0, 1, 0, 0}, {0, 1, 1, 1, 0}, {1, 1, 1, 1, 1} };
+    int oct[3][3] = { {0, 1, 0}, {1, 1, 1}, {0, 1, 0} };
+    int cruz[3][5] = { {0, 0, 1, 0, 0}, {1, 1, 1, 1, 1}, {0, 0, 1, 0, 0} };
+
     printf("\nTABULEIRO DA BATALHA NAVAL!\n\n");
     printf("Posições ocupadas: 3\n");
     printf("Posições desocupadas: 0\n\n");
     
     for(int i = 0; i < 10; i++)
-    {
-        printf("%d %d %d %d %d %d %d %d %d %d\n", tabuleiro[x][0], tabuleiro[x][1], tabuleiro[x][2], tabuleiro[x][3], tabuleiro[x][4], tabuleiro[x][5], tabuleiro[x][6], tabuleiro[x][7], tabuleiro[x][8], tabuleiro[x][9]);
-        x++;
-    }
+    { for (int j = 0; j < 10; j++) {
+        printf("%d ", tabuleiro[i][j]);
+        }
         printf("\n");
-
-    // Nível Mestre - Habilidades Especiais com Matrizes
-    // Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
-    // Sugestão: Utilize estruturas de repetição aninhadas para preencher as áreas afetadas por essas habilidades no tabuleiro.
-    // Sugestão: Exiba o tabuleiro com as áreas afetadas, utilizando 0 para áreas não afetadas e 1 para áreas atingidas.
-
-    // Exemplos de exibição das habilidades:
-    // Exemplo para habilidade em cone:
-    // 0 0 1 0 0
-    // 0 1 1 1 0
-    // 1 1 1 1 1
+    }
+    for(int i = 0; i < 3; i++) {
+        for(int j = 0; j < 5; j++) {
+            
+        }
+    }
     
-    // Exemplo para habilidade em octaedro:
-    // 0 0 1 0 0
-    // 0 1 1 1 0
-    // 0 0 1 0 0
+    int linhaCone = 3, colunaCone = 0;
+    int linhaOct = 7, colunaOct = 7;
+    int linhaCruz = 3, colunaCruz = 5;
 
-    // Exemplo para habilidade em cruz:
-    // 0 0 1 0 0
-    // 1 1 1 1 1
-    // 0 0 1 0 0
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 5; j++) {
+            int x = linhaCone + i;
+            int y = colunaCone + j;
+            if (x < 10 && y < 10)  // garante que não sai do limite
+                tabuleiro[x][y] += cone[i][j];
+        }
+    }
+
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            int x = linhaOct + i;
+            int y = colunaOct + j;
+            if (x < 10 && y < 10)  // garante que não sai do limite
+                tabuleiro[x][y] += oct[i][j];
+        }
+    }
+
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 5; j++) {
+            int x = linhaCruz + i;
+            int y = colunaCruz + j;
+            if (x < 10 && y < 10)
+                tabuleiro[x][y] += cruz[i][j];
+        }
+    }
+    
+    printf("\nTABULEIRO COM AS HABILIDADES ESPECIAIS INSERIDAS!\n");
+    printf("Posições dos Navios: 3\n");
+    printf("Posições das Habilidades: 1\n\n");
+
+    for(int i = 0; i < 10; i++)
+    { for (int j = 0; j < 10; j++) {
+        printf("%d ", tabuleiro[i][j]);
+        }
+        printf("\n");
+    }    
+
+    printf("\n");
 
     return 0;
 }
